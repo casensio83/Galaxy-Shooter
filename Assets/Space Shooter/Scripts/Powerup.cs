@@ -5,6 +5,7 @@ using UnityEngine;
 public class Powerup : MonoBehaviour {
 
 	private float speed = 3.0f;
+	public int powerupdID; // 0 = triple shot, 2 = shield
 
 
 	void Start () 
@@ -26,6 +27,12 @@ public class Powerup : MonoBehaviour {
 			if (player != null) 
 			{
 				player.tripleShotPowerupOn ();
+
+				if (powerupdID == 2) 
+				{
+					// enable shield
+					player.enableShield();
+				}
 			}
 				
 			Destroy (this.gameObject);
