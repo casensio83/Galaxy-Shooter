@@ -23,16 +23,18 @@ public class Player : MonoBehaviour
 	// Game objects
 	public GameObject singleLaserShot;
 	public GameObject tripleLaserShot;
+    public GameObject explosion;
 
     private float speed = 5.0f;
     private float fireRate = 0.25f;
     private float nextFire = 0.0f;
     public bool isTripleShotEnabled = false;
+    public int numberOfLives = 3;
 
 
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+		transform.position = new Vector3 (0, 0, 0);
 
     }
 
@@ -115,6 +117,17 @@ public class Player : MonoBehaviour
         else if (positionX < BOUNDARY_LEFT)
         {
             transform.position = new Vector3(BOUNDARY_LEFT, positionY, POSITION_Z);
+        }
+    }
+
+    public void removeLive()
+    {
+        numberOfLives--;
+
+        if(numberOfLives < 1) 
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 
