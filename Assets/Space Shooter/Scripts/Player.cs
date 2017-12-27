@@ -21,16 +21,29 @@ public class Player : MonoBehaviour
     private const float POSITION_ZERO = 0;
 
 	// Game objects
-	public GameObject singleLaserShot;
-	public GameObject tripleLaserShot;
-    public GameObject explosion;
+	[SerializeField]
+	private GameObject singleLaserShot;
 
+	[SerializeField]
+	private GameObject tripleLaserShot;
+
+	[SerializeField]
+    private GameObject explosion;
+
+	[SerializeField]
+	private GameObject shield;
+
+	// Powerups 
+	public bool isTripleShotEnabled = false;
+	public bool isShieldEnabled = false;
+
+	[SerializeField]
     private float speed = 5.0f;
-    private float fireRate = 0.25f;
-    private float nextFire = 0.0f;
-    public bool isTripleShotEnabled = false;
-    public int numberOfLives = 3;
 
+
+	private float fireRate = 0.25f;
+	private float nextFire = 0.0f;
+	public int numberOfLives = 3;
 
     void Start()
     {
@@ -122,6 +135,13 @@ public class Player : MonoBehaviour
 
     public void removeLive()
     {
+		if (isShieldEnabled == true) 
+		{
+			isShieldEnabled = false;
+			shield.SetActive (false);
+			return;
+		}
+
         numberOfLives--;
 
         if(numberOfLives < 1) 
@@ -135,6 +155,12 @@ public class Player : MonoBehaviour
 	{
 		isTripleShotEnabled = true;
 		StartCoroutine (tripleShotPowerupRoutine());
+	}
+
+	public void enableShield()
+	{
+		isShieldEnabled = true;
+		shield.SetActive (true);
 	}
 
 	public IEnumerator tripleShotPowerupRoutine()
