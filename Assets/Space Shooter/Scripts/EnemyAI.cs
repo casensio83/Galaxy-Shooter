@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour {
     private const float MAX_RANGE = 8;
     private const float INITIAL_ENEMY_Y_POSITION = 7;
 
-    public GameObject Enemy_Explosion;
+	public GameObject enemyExplosion;
 
 	void Start () 
     {
@@ -33,14 +33,13 @@ public class EnemyAI : MonoBehaviour {
     {
         if (other.tag == "Laser")
         {
-
             if(other.transform.parent != null)
             {
                 Destroy(other.transform.parent.gameObject);
             }
 
             Destroy(other.gameObject);
-            Instantiate(Enemy_Explosion, transform.position, Quaternion.identity);
+			Instantiate (enemyExplosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
         else if (other.tag == "Player")
@@ -52,7 +51,7 @@ public class EnemyAI : MonoBehaviour {
                 player.removeLive();
             }
 
-            Instantiate(Enemy_Explosion, transform.position, Quaternion.identity);
+			Instantiate (enemyExplosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

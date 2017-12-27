@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 	// Game objects
 	public GameObject singleLaserShot;
 	public GameObject tripleLaserShot;
+    public GameObject explosion;
 
     private float speed = 5.0f;
     private float fireRate = 0.25f;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+		transform.position = new Vector3 (0, 0, 0);
 
     }
 
@@ -125,6 +126,7 @@ public class Player : MonoBehaviour
 
         if(numberOfLives < 1) 
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
