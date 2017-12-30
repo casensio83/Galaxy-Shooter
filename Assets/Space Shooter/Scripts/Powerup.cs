@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup : MonoBehaviour {
+public class Powerup : MonoBehaviour 
+{
 
 	private float speed = 3.0f;
 	public int powerupdID; // 0 = triple shot, 2 = shield

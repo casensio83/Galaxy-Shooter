@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour {
+public class EnemyAI : MonoBehaviour 
+{
 
     private float speed = 4.0f;
     private const float BOUNDARY_DOWN = -6.0f;
@@ -11,7 +12,8 @@ public class EnemyAI : MonoBehaviour {
     private const float MAX_RANGE = 8;
     private const float INITIAL_ENEMY_Y_POSITION = 7;
 
-	public GameObject enemyExplosion;
+	[SerializeField]
+	private GameObject enemyExplosion;
 
 	void Start () 
     {

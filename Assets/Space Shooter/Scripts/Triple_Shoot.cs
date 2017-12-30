@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triple_Shoot : MonoBehaviour {
+public class Triple_Shoot : MonoBehaviour 
+{
 
 	// Use this for initialization
 	void Start () 
