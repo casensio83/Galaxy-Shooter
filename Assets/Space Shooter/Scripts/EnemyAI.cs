@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
 	
 	void Update () 
     {
-		moveEnemy();
+		moveEnemy ();
 
         if(transform.position.y <= BOUNDARY_DOWN) {
             float randomXPosition = Random.Range(MIN_RANGE, MAX_RANGE);
