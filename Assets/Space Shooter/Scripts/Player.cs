@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 
 	// Powerups 
 	public bool isTripleShotEnabled = false;
+	public bool isSpeedBoostEnabled = false;
 	public bool isShieldEnabled = false;
 
 	[SerializeField]
@@ -96,8 +97,15 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.right * this.speed * horizontalInput * Time.deltaTime);
-        transform.Translate(Vector3.up * this.speed * verticalInput * Time.deltaTime);
+		if (isSpeedBoostEnabled == true) {
+			transform.Translate (Vector3.right * this.speed * 2f * horizontalInput * Time.deltaTime);
+			transform.Translate (Vector3.up * this.speed * 2f * verticalInput * Time.deltaTime);
+		} else 
+		{
+			transform.Translate (Vector3.right * this.speed * horizontalInput * Time.deltaTime);
+			transform.Translate (Vector3.up * this.speed * verticalInput * Time.deltaTime);
+		}
+			
     }
 
     private void setPlayerBoundaries() 
@@ -157,6 +165,11 @@ public class Player : MonoBehaviour
 		StartCoroutine (tripleShotPowerupRoutine());
 	}
 
+	public void enableSpeedBoost()
+	{
+		isSpeedBoostEnabled = true;
+	}
+
 	public void enableShield()
 	{
 		isShieldEnabled = true;
@@ -167,5 +180,11 @@ public class Player : MonoBehaviour
 	{
 		yield return new WaitForSeconds (5.0f);
 		isTripleShotEnabled = false;
+	}
+
+	public IEnumerator speedBoostRoutine()
+	{
+		yield return new WaitForSeconds (5.0f);
+		isSpeedBoostEnabled = false;
 	}
 }

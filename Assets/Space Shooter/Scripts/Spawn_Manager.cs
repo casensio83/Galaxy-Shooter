@@ -13,14 +13,25 @@ public class Spawn_Manager : MonoBehaviour
 	void Start () 
 	{
 		StartCoroutine (enemySpawnRoutine());
+		StartCoroutine (powerupSpawnRoutine());
 	}
 	
 	IEnumerator enemySpawnRoutine()
 	{
 		while (true) 
 		{
-			Instantiate (enemy, new Vector3(Random.Range(-8f,8f), 5, 0), Quaternion.identity);
+			Instantiate (enemy, new Vector3(Random.Range(-8f,8f), 7, 0), Quaternion.identity);
 			yield return new WaitForSeconds(5.0f);
+		}
+	}
+
+	IEnumerator powerupSpawnRoutine()
+	{
+		while (true) 
+		{
+			int randomPowerup = Random.Range (0,3);
+			Instantiate (powerups[randomPowerup], new Vector3(Random.Range(-7f,7f), 7, 0), Quaternion.identity);
+			yield return new WaitForSeconds (5.0f);
 		}
 	}
 }

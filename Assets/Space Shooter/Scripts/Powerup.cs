@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour 
 {
-
+	[SerializeField]
 	private float speed = 3.0f;
-	public int powerupdID; // 0 = triple shot, 2 = shield
+
+	[SerializeField]
+	private int powerupdID; // 0 = triple shot, 1 = speed, 2 = shield
 
 
 	void Start () 
@@ -27,12 +29,19 @@ public class Powerup : MonoBehaviour
 
 			if (player != null) 
 			{
-				player.tripleShotPowerupOn ();
-
-				if (powerupdID == 2) 
+				if (powerupdID == 0)
 				{
-					// enable shield
-					player.enableShield();
+					player.tripleShotPowerupOn(); // enable triple shot
+				}
+
+				else if (powerupdID == 1)
+				{
+					player.enableSpeedBoost(); // enable speed boost
+				}
+
+				else if (powerupdID == 2) 
+				{
+					player.enableShield(); // enable shield
 				}
 			}
 				
