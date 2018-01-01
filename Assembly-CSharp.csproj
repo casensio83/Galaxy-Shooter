@@ -52,11 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Space Shooter\Scripts\EnemyAI.cs" />
+     <Compile Include="Assets\Space Shooter\Scripts\ExplosionEffect.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\GameManager.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Laser.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Player.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Powerup.cs" />
-     <Compile Include="Assets\Space Shooter\Scripts\Spawn_Manager.cs" />
+     <Compile Include="Assets\Space Shooter\Scripts\SpawnManager.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Triple_Shoot.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\UIManager.cs" />
      <None Include="Assets\Space Shooter\Materials\Shaders\Galaxy.shader" />

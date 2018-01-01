@@ -565,8 +565,9 @@ GameObject:
   m_Component:
   - component: {fileID: 985817903}
   - component: {fileID: 985817902}
+  - component: {fileID: 985817904}
   m_Layer: 0
-  m_Name: Spawn_Manager
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,6 +589,7 @@ MonoBehaviour:
   - {fileID: 1947614647257746, guid: 19f2ffc5de6da4589bdf37413dc4e252, type: 2}
   - {fileID: 1943863550099062, guid: 66caba5c01b5346b2a08cbf2b29b9853, type: 2}
   - {fileID: 1010764487034566, guid: 66f1f987c0f174545a1f8b5b4dcf8008, type: 2}
+  gameManager: {fileID: 0}
 --- !u!4 &985817903
 Transform:
   m_ObjectHideFlags: 0
@@ -601,6 +603,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &985817904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985817901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9d2a6eb6a074081bd0098d8ef81147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1745383920791858, guid: c61e70a96396340bba5162baec77e630, type: 2}
+  powerups:
+  - {fileID: 1947614647257746, guid: 19f2ffc5de6da4589bdf37413dc4e252, type: 2}
+  - {fileID: 1943863550099062, guid: 66caba5c01b5346b2a08cbf2b29b9853, type: 2}
+  - {fileID: 1010764487034566, guid: 66f1f987c0f174545a1f8b5b4dcf8008, type: 2}
 --- !u!1 &1177172386
 GameObject:
   m_ObjectHideFlags: 0

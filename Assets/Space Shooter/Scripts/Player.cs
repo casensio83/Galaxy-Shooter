@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
 	private UIManager uiManager;
 	private GameManager gameManager;
-	private Spawn_Manager spawnManager;
+	private SpawnManager spawnManager;
 
 
 	private float fireRate = 0.25f;
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
 		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-		spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<Spawn_Manager> ();
+		spawnManager = GameObject.Find ("SpawnManager").GetComponent<SpawnManager> ();
 
 		if (spawnManager != null) 
 		{

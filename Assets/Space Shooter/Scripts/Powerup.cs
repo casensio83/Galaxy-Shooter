@@ -19,6 +19,11 @@ public class Powerup : MonoBehaviour
 	void Update () 
 	{
 		movePowerup ();
+
+		if (transform.position.y < -7) 
+		{
+			Destroy (this.gameObject);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
