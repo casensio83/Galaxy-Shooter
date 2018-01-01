@@ -15,9 +15,11 @@ public class EnemyAI : MonoBehaviour
 	[SerializeField]
 	private GameObject enemyExplosion;
 
+	private UIManager uiManager;
+
 	void Start () 
     {
-		
+		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
 	}
 	
 	void Update () 
@@ -39,9 +41,15 @@ public class EnemyAI : MonoBehaviour
             {
                 Destroy(other.transform.parent.gameObject);
             }
-
+				
             Destroy(other.gameObject);
 			Instantiate (enemyExplosion, transform.position, Quaternion.identity);
+
+			if(uiManager != null)
+			{
+				uiManager.updateScore();
+			}
+
             Destroy(this.gameObject);
         }
         else if (other.tag == "Player")

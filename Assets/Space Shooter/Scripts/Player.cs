@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 	[SerializeField]
     private float speed = 5.0f;
 
+	private UIManager uiManager;
+
 
 	private float fireRate = 0.25f;
 	private float nextFire = 0.0f;
@@ -49,6 +51,13 @@ public class Player : MonoBehaviour
     void Start()
     {
 		transform.position = new Vector3 (0, 0, 0);
+
+		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
+
+		if(uiManager != null)
+		{
+			uiManager.updateLives (numberOfLives);
+		}
 
     }
 
@@ -151,6 +160,7 @@ public class Player : MonoBehaviour
 		}
 
         numberOfLives--;
+		uiManager.updateLives (numberOfLives);
 
         if(numberOfLives < 1) 
         {

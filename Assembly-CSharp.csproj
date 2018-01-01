@@ -57,6 +57,7 @@
      <Compile Include="Assets\Space Shooter\Scripts\Powerup.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Spawn_Manager.cs" />
      <Compile Include="Assets\Space Shooter\Scripts\Triple_Shoot.cs" />
+     <Compile Include="Assets\Space Shooter\Scripts\UIManager.cs" />
      <None Include="Assets\Space Shooter\Materials\Shaders\Galaxy.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
