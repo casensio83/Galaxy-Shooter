@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     private float speed = 5.0f;
 
 	private UIManager uiManager;
+	private GameManager gameManager;
+	private Spawn_Manager spawnManager;
 
 
 	private float fireRate = 0.25f;
@@ -53,6 +55,13 @@ public class Player : MonoBehaviour
 		transform.position = new Vector3 (0, 0, 0);
 
 		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<Spawn_Manager> ();
+
+		if (spawnManager != null) 
+		{
+			spawnManager.startSpawnCoroutines ();
+		}
 
 		if(uiManager != null)
 		{
@@ -165,6 +174,8 @@ public class Player : MonoBehaviour
         if(numberOfLives < 1) 
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+			gameManager.gameOver = true;
+			uiManager.showTitleScreen();
             Destroy(this.gameObject);
         }
     }

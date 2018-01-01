@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
 	public Sprite[] lives;
 	public Image livesImageDisplay;
 	public Text scoreText;
+	public GameObject titleScreen;
+
+
 	public int score;
 
 	void Start()
@@ -29,12 +32,20 @@ public class UIManager : MonoBehaviour
 	{
 		score += 10;
 
-		Debug.Log ("scoreText ->" + scoreText);
-
 		if (scoreText != null) 
 		{
 			scoreText.text = "Score: " + score;
 		}
 	}
 
+	public void showTitleScreen()
+	{
+		titleScreen.SetActive (true);
+	}
+
+	public void hideTitleScreen()
+	{
+		titleScreen.SetActive (false);
+		scoreText.text = "Score: 0";
+	}
 }
