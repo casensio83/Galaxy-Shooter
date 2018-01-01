@@ -41,6 +41,10 @@ public class Player : MonoBehaviour
 	[SerializeField]
     private float speed = 5.0f;
 
+	private UIManager uiManager;
+	private GameManager gameManager;
+	private Spawn_Manager spawnManager;
+
 
 	private float fireRate = 0.25f;
 	private float nextFire = 0.0f;
@@ -49,6 +53,20 @@ public class Player : MonoBehaviour
     void Start()
     {
 		transform.position = new Vector3 (0, 0, 0);
+
+		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<Spawn_Manager> ();
+
+		if (spawnManager != null) 
+		{
+			spawnManager.startSpawnCoroutines ();
+		}
+
+		if(uiManager != null)
+		{
+			uiManager.updateLives (numberOfLives);
+		}
 
     }
 
@@ -151,10 +169,13 @@ public class Player : MonoBehaviour
 		}
 
         numberOfLives--;
+		uiManager.updateLives (numberOfLives);
 
         if(numberOfLives < 1) 
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+			gameManager.gameOver = true;
+			uiManager.showTitleScreen();
             Destroy(this.gameObject);
         }
     }
