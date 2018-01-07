@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour 
 {
 
-    private float speed = 4.0f;
+    private float speed = 3.0f;
     private const float BOUNDARY_DOWN = -6.0f;
     private const float POSITION_Z = 0;
     private const float MIN_RANGE = -8;
@@ -15,11 +15,15 @@ public class EnemyAI : MonoBehaviour
 	[SerializeField]
 	private GameObject enemyExplosion;
 
+	[SerializeField]
+	private AudioClip audioClip;
+
 	private UIManager uiManager;
+
 
 	void Start () 
     {
-		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
+		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager> ();
 	}
 	
 	void Update () 
@@ -49,7 +53,7 @@ public class EnemyAI : MonoBehaviour
 			{
 				uiManager.updateScore();
 			}
-
+			AudioSource.PlayClipAtPoint (audioClip, Camera.main.transform.position, 1f);
             Destroy(this.gameObject);
         }
         else if (other.tag == "Player")
@@ -62,6 +66,7 @@ public class EnemyAI : MonoBehaviour
             }
 
 			Instantiate (enemyExplosion, transform.position, Quaternion.identity);
+			AudioSource.PlayClipAtPoint (audioClip, Camera.main.transform.position, 1f);
             Destroy(this.gameObject);
         }
     }
