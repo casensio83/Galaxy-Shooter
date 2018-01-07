@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private GameObject shield;
 
+	[SerializeField]
+	private GameObject[] engines;
+
 	// Powerups 
 	public bool isTripleShotEnabled = false;
 	public bool isSpeedBoostEnabled = false;
@@ -44,11 +47,13 @@ public class Player : MonoBehaviour
 	private UIManager uiManager;
 	private GameManager gameManager;
 	private SpawnManager spawnManager;
+	private AudioSource audioSource;
 
 
 	private float fireRate = 0.25f;
 	private float nextFire = 0.0f;
 	public int numberOfLives = 3;
+	private int hitCount = 0;
 
     void Start()
     {
@@ -57,6 +62,7 @@ public class Player : MonoBehaviour
 		uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		spawnManager = GameObject.Find ("SpawnManager").GetComponent<SpawnManager> ();
+		audioSource = GetComponent<AudioSource> ();
 
 		if (spawnManager != null) 
 		{
@@ -68,20 +74,24 @@ public class Player : MonoBehaviour
 			uiManager.updateLives (numberOfLives);
 		}
 
+		hitCount = 0;
+
     }
 
     void Update()
     {
         userInputHandler();
         setPlayerBoundaries();
-        shootWhenClickOnSpaceBarOrMouseLeftClick();
+        shoot();
     }
 
-    private void shootWhenClickOnSpaceBarOrMouseLeftClick()
+    private void shoot()
     {
         // also limit fire with Time.time
 		if (canFire())
         {
+			audioSource.Play ();
+
             if(isTripleShotEnabled) 
             {
 				tripleShoot();
@@ -166,6 +176,16 @@ public class Player : MonoBehaviour
 			isShieldEnabled = false;
 			shield.SetActive (false);
 			return;
+		}
+
+		hitCount++;
+
+		if (hitCount == 1) {
+			engines [0].SetActive (true);
+		} 
+		else if (hitCount == 2) 
+		{
+			engines [1].SetActive (true);
 		}
 
         numberOfLives--;
