@@ -1,3 +1,3 @@
 # Galaxy-Shooter Game
 
-![alt text](screenshots/portada.png "Description goes here")
+Created with Unity
